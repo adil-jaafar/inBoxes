@@ -1,0 +1,41 @@
+/* ************************* TABLE LAYOUT **************************** */
+@mixin table-layout($breakpoint) {
+  [breaker] {
+    display: none;
+  }
+
+  [break-here] {
+    display: none;
+  }
+
+  table[twrap] {
+    thead {
+      tr {
+        display: flex;
+        th {
+          display: none;
+        }
+
+        th[breaker] ~ th {
+          background-color: red;
+          display: initial;
+          width: calc(100% / 3);
+        }
+      }
+    }
+
+    tbody tr {
+      display: flex;
+      flex-flow: wrap;
+
+      & td[break-here] {
+        display: flex;
+        flex-basis: 100%;
+
+        & ~ td {
+          width: calc(100% / 3);
+        }
+      }
+    }
+  }
+}

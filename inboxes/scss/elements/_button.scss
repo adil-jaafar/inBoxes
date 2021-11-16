@@ -1,0 +1,123 @@
+.btn {
+  cursor: pointer;
+  background-color: $white-color;
+  border-radius: 4px;
+  border: 1px solid $lite-color;
+  color: #212426;
+  font-weight: 300;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  transition: border-color 0.1s, background-color 0.1s;
+  text-decoration: none;
+
+  &.is-primary {
+    background-color: $primary-color;
+    color: $white-color;
+  }
+
+  &.is-disabled {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .btn {
+    padding: 5px;
+    background-color: $black-color;
+
+    &.is-primary {
+      background-color: $primary-color;
+    }
+
+    &::before {
+      font-size: 20px;
+      color: $lite-color;
+    }
+  }
+
+  &.is-triangle {
+    border-width: 30px;
+    border-radius: 0px;
+    padding: 0;
+    border-color: $black-color;
+    border-style: solid;
+    background-color: transparent;
+
+    &.is-small {
+      border-width: 20px;
+      &::before {
+        top: -15px;
+        left: -15px;
+        font-size: 12px;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      top: -25px;
+      left: -25px;
+      font-size: 20px;
+      color: $lite-color;
+    }
+
+    &.is-primary {
+      border-color: $primary-color;
+      background-color: transparent;
+    }
+
+    [dir="rtl"] & {
+      &[relative-top][start] {
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+
+        &::before {
+          top: -25px;
+          left: 0px;
+        }
+      }
+    }
+
+    html:not([dir="rtl"]) & {
+      &[relative-top][start] {
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+      }
+    }
+
+    &[relative-top][center] {
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      &::before {
+        top: -30px;
+        left: -10px;
+      }
+    }
+
+    [dir="rtl"] & {
+      &[relative-top][end] {
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+      }
+    }
+
+    html:not([dir="rtl"]) & {
+      &[relative-top][end] {
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+        &::before {
+          top: -25px;
+          left: 0px;
+        }
+      }
+    }
+
+    &[relative-top]:not([start]):not([center]):not([end]) {
+      &::before {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

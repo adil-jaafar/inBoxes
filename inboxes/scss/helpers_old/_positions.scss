@@ -1,0 +1,752 @@
+/* ************************* POSITIONS **************************** */
+@mixin positions($breakpoint) {
+  [relative-top=""]:not([relative-bottom~="#{$breakpoint}"]):not([relative-left~="#{$breakpoint}"]):not([relative-right~="#{$breakpoint}"]),
+  [relative-top~="#{$breakpoint}"] {
+    z-index: 98;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      right: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+      &[start~="#{$breakpoint}"] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+      &[end~="#{$breakpoint}"] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [relative-bottom=""]:not([relative-top~="#{$breakpoint}"]):not([relative-left~="#{$breakpoint}"]):not([relative-right~="#{$breakpoint}"]),
+  [relative-bottom~="#{$breakpoint}"] {
+    z-index: 98;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      right: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+      &[start~="#{$breakpoint}"] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+      &[end~="#{$breakpoint}"] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [relative-left=""]:not([relative-top~="#{$breakpoint}"]):not([relative-bottom~="#{$breakpoint}"]):not([relative-right~="#{$breakpoint}"]),
+  [relative-left~="#{$breakpoint}"] {
+    z-index: 98;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    [dir="rtl"] & {
+      left: auto;
+      right: 0;
+    }
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      bottom: auto;
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      top: auto;
+    }
+  }
+
+  [relative-right=""]:not([relative-top~="#{$breakpoint}"]):not([relative-bottom~="#{$breakpoint}"]):not([relative-left~="#{$breakpoint}"]),
+  [relative-right~="#{$breakpoint}"] {
+    z-index: 98;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    [dir="rtl"] & {
+      left: 0;
+      right: auto;
+    }
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      bottom: auto;
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      top: auto;
+    }
+  }
+
+
+  [fixed-top=""]:not([fixed-bottom~="#{$breakpoint}"]):not([fixed-left~="#{$breakpoint}"]):not([fixed-right~="#{$breakpoint}"]),
+  [fixed-top~="#{$breakpoint}"] {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: initial;
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      right: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+      &[start~="#{$breakpoint}"] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+      &[end~="#{$breakpoint}"] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [fixed-bottom=""]:not([fixed-top~="#{$breakpoint}"]):not([fixed-left~="#{$breakpoint}"]):not([fixed-right~="#{$breakpoint}"]),
+  [fixed-bottom~="#{$breakpoint}"] {
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: initial;
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      right: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+      &[start~="#{$breakpoint}"] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+      &[end~="#{$breakpoint}"] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [fixed-left=""]:not([fixed-top~="#{$breakpoint}"]):not([fixed-bottom~="#{$breakpoint}"]):not([fixed-right~="#{$breakpoint}"]),
+  [fixed-left~="#{$breakpoint}"] {
+    z-index: 99;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: initial;
+
+    [dir="rtl"] & {
+      left: auto;
+      right: 0;
+    }
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      bottom: auto;
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      top: auto;
+    }
+  }
+
+  [fixed-right=""]:not([fixed-top~="#{$breakpoint}"]):not([fixed-bottom~="#{$breakpoint}"]):not([fixed-left~="#{$breakpoint}"]),
+  [fixed-right~="#{$breakpoint}"] {
+    z-index: 99;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: initial;
+
+    [dir="rtl"] & {
+      left: 0;
+      right: auto;
+    }
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      bottom: auto;
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      top: auto;
+    }
+  }
+
+  table {
+    &[sticky-top=""]:not([sticky-bottom~="#{$breakpoint}"]):not([sticky-left~="#{$breakpoint}"]):not([sticky-right~="#{$breakpoint}"]),
+    &[sticky-top~="#{$breakpoint}"] {
+      thead th {
+        z-index: 10;
+        position: sticky;
+        top: 0;
+      }
+    }
+  }
+
+  [sticky-top=""]:not([sticky-bottom~="#{$breakpoint}"]),
+  [sticky-top~="#{$breakpoint}"] {
+    z-index: 97;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      right: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+      &[start~="#{$breakpoint}"] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+      &[end~="#{$breakpoint}"] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [sticky-bottom=""]:not([sticky-top~="#{$breakpoint}"]),
+  [sticky-bottom~="#{$breakpoint}"] {
+    z-index: 97;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[start~="#{$breakpoint}"] {
+      right: auto;
+    }
+
+    &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+    &[end~="#{$breakpoint}"] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""]:not([center~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+      &[start~="#{$breakpoint}"] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""]:not([start~="#{$breakpoint}"]):not([center~="#{$breakpoint}"]),
+      &[end~="#{$breakpoint}"] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""]:not([start~="#{$breakpoint}"]):not([end~="#{$breakpoint}"]),
+    &[center~="#{$breakpoint}"] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [overlay=""],
+  [overlay~="#{$breakpoint}"] {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    z-index: 100;
+
+    &::before {
+      content: "";
+      background-color: rgba(0,0,0,0.8);
+      left: auto;
+      right: auto;
+      top: auto;
+      bottom: auto;
+      position: fixed;
+      width: 250vw;
+      height: 250vh;
+      transform: translate(-50%, -50%) translateZ(-1px);
+      
+      [dir="rtl"] & {
+        transform: translate(50%, -50%) translateZ(-1px);
+      }
+    }
+  }
+}
+
+/* ************************* POSITIONS LIGHT**************************** */
+@mixin positions-light() {
+  [relative-top=""] {
+    z-index: 98;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""] {
+      right: auto;
+    }
+
+    &[end=""] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [relative-bottom=""] {
+    z-index: 98;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""] {
+      right: auto;
+    }
+
+    &[end=""] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [relative-left=""] {
+    z-index: 98;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    [dir="rtl"] & {
+      left: auto;
+      right: 0;
+    }
+
+    &[start=""] {
+      bottom: auto;
+    }
+
+    &[center=""] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""] {
+      top: auto;
+    }
+  }
+
+  [relative-right=""] {
+    z-index: 98;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    [dir="rtl"] & {
+      left: 0;
+      right: auto;
+    }
+
+    &[start=""] {
+      bottom: auto;
+    }
+
+    &[center=""] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""] {
+      top: auto;
+    }
+  }
+
+  [fixed-top=""] {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""] {
+      right: auto;
+    }
+
+    &[end=""] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [fixed-bottom=""] {
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""] {
+      right: auto;
+    }
+
+    &[end=""] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [fixed-left=""] {
+    z-index: 99;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    [dir="rtl"] & {
+      left: auto;
+      right: 0;
+    }
+
+    &[start=""] {
+      bottom: auto;
+    }
+
+    &[center=""] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""] {
+      top: auto;
+    }
+  }
+
+  [fixed-right=""] {
+    z-index: 99;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    [dir="rtl"] & {
+      left: 0;
+      right: auto;
+    }
+
+    &[start=""] {
+      bottom: auto;
+    }
+
+    &[center=""] {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
+
+    &[end=""] {
+      top: auto;
+    }
+  }
+
+  [sticky-top=""] {
+    z-index: 97;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""] {
+      right: auto;
+    }
+
+    &[end=""] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [sticky-bottom=""] {
+    z-index: 97;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &[start=""] {
+      right: auto;
+    }
+
+    &[end=""] {
+      left: auto;
+    }
+
+    [dir="rtl"] & {
+      &[start=""] {
+        right: 0;
+        left: auto;
+      }
+
+      &[end=""] {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &[center=""] {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
+
+  [overlay=""] {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    z-index: 100;
+
+    &::before {
+      content: "";
+      background-color: rgba(0,0,0,0.8);
+      left: auto;
+      right: auto;
+      top: auto;
+      bottom: auto;
+      position: fixed;
+      width: 250vw;
+      height: 250vh;
+      transform: translate(-50%, -50%) translateZ(-1px);
+      
+      [dir="rtl"] & {
+        transform: translate(50%, -50%) translateZ(-1px);
+      }
+    }
+  }
+}

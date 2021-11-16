@@ -1,0 +1,60 @@
+/* ************************* FLEX **************************** */
+[flex=""] {
+  flex-grow: 1 !important;
+  flex-shrink: 1 !important;
+}
+
+[flex="none"] {
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+@mixin flex($i, $breakpoint) {
+  $selector: '[flex~="#{$breakpoint}-#{$i}"], [flex~="#{$i}"]:not([flex*="#{$breakpoint}-"])';
+  #{$selector} {
+    flex-grow: $i !important;
+    flex-shrink: 1 !important;
+  }
+}
+
+@mixin flex-order($i, $breakpoint) {
+  $selector-order: '[flex-order~="#{$breakpoint}-#{$i}"], [flex-order~="#{$i}"]:not([flex-order*="#{$breakpoint}-"])';
+  #{$selector-order} {
+    order: $i;
+  }
+}
+
+@mixin flex-none($breakpoint) {
+  $selector: '[flex~="#{$breakpoint}-none"], [flex~="none"]:not([flex*="#{$breakpoint}-"])';
+  #{$selector} {
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/*****************************************************************/
+
+@mixin flex-light($i) {
+  $selector: '[flex="#{$i}"]';
+  #{$selector} {
+    flex-grow: $i !important;
+    flex-shrink: 1 !important;
+  }
+}
+
+@mixin flex-order-light($i) {
+  $selector-order: '[flex-order="#{$i}"]';
+  #{$selector-order} {
+    order: $i;
+  }
+}
+
+@mixin flex-none-light() {
+  $selector: '[flex="none"]';
+  #{$selector} {
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+

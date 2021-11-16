@@ -1,0 +1,222 @@
+/* ************************* HBOX LAYOUT **************************** */
+@mixin hbox-layout($breakpoint) {
+  body {
+    &[hbox=""]:not([vbox~="#{$breakpoint}"]):not([wrap*="#{$breakpoint}-"]):not([wrap=""]):not([wrap~="1"]):not([wrap~="2"]):not([wrap~="3"]):not([wrap~="4"]):not([wrap~="5"]),
+    &[hbox~="#{$breakpoint}"] {
+      &:not([items-start=""]),
+      &:not([items-start~="#{$breakpoint}"]),
+      &[fluid=""],
+      &[fluid~="#{$breakpoint}"] {
+        min-height: 100vh;
+      }
+    }
+  }
+
+  [hbox=""]:not([vbox~="#{$breakpoint}"]):not([wrap*="#{$breakpoint}-"]):not([wrap=""]):not([wrap~="1"]):not([wrap~="2"]):not([wrap~="3"]):not([wrap~="4"]):not([wrap~="5"]),
+  [hbox~="#{$breakpoint}"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; //flex-start | flex-end | center | space-between | space-around
+    align-items: stretch;
+
+    html:not([dir="rtl"]) & {
+      > [m-auto=""],
+      > [m-auto~="#{$breakpoint}"]:not([m-auto^="!"]),
+      > [m-auto^="!"]:not([m-auto~="#{$breakpoint}"]) {
+        margin-left: auto;
+      }
+    }
+
+    [dir="rtl"] & {
+      > [m-auto=""],
+      > [m-auto~="#{$breakpoint}"]:not([m-auto^="!"]),
+      > [m-auto^="!"]:not([m-auto~="#{$breakpoint}"]) {
+        margin-right: auto;
+      }
+    }
+
+    > img {
+      max-height: 100%;
+      object-fit: cover;
+      align-self: center;
+    }
+
+    > *:not(img) {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    &[space-start=""]:not([space-center~="#{$breakpoint}"]):not([space-end~="#{$breakpoint}"]):not([space-between~="#{$breakpoint}"]):not([space-around~="#{$breakpoint}"]):not([space-evenly~="#{$breakpoint}"]),
+    &[space-start~="#{$breakpoint}"] {
+      justify-content: flex-start;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex: initial;
+      }
+    }
+    &[space-center=""]:not([space-start~="#{$breakpoint}"]):not([space-end~="#{$breakpoint}"]):not([space-between~="#{$breakpoint}"]):not([space-around~="#{$breakpoint}"]):not([space-evenly~="#{$breakpoint}"]),
+    &[space-center~="#{$breakpoint}"] {
+      justify-content: center;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex: initial;
+      }
+    }
+    &[space-end=""]:not([space-center~="#{$breakpoint}"]):not([space-start~="#{$breakpoint}"]):not([space-between~="#{$breakpoint}"]):not([space-around~="#{$breakpoint}"]):not([space-evenly~="#{$breakpoint}"]),
+    &[space-end~="#{$breakpoint}"] {
+      justify-content: flex-end;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex: initial;
+      }
+    }
+    &[space-between=""]:not([space-center~="#{$breakpoint}"]):not([space-end~="#{$breakpoint}"]):not([space-start~="#{$breakpoint}"]):not([space-around~="#{$breakpoint}"]):not([space-evenly~="#{$breakpoint}"]),
+    &[space-between~="#{$breakpoint}"] {
+      justify-content: space-between;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex: initial;
+      }
+    }
+    &[space-around=""]:not([space-center~="#{$breakpoint}"]):not([space-end~="#{$breakpoint}"]):not([space-between~="#{$breakpoint}"]):not([space-start~="#{$breakpoint}"]):not([space-evenly~="#{$breakpoint}"]),
+    &[space-around~="#{$breakpoint}"] {
+      justify-content: space-around;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex: initial;
+      }
+    }
+    &[space-evenly=""]:not([space-center~="#{$breakpoint}"]):not([space-end~="#{$breakpoint}"]):not([space-between~="#{$breakpoint}"]):not([space-around~="#{$breakpoint}"]):not([space-start~="#{$breakpoint}"]),
+    &[space-evenly~="#{$breakpoint}"] {
+      justify-content: space-evenly;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex: initial;
+      }
+    }
+
+    &[items-start=""]:not([items-center~="#{$breakpoint}"]):not([items-end~="#{$breakpoint}"]),
+    &[items-start~="#{$breakpoint}"] {
+      align-items: flex-start;
+      > img {
+        align-self: flex-start;
+      }
+    }
+    &[items-center=""]:not([items-start~="#{$breakpoint}"]):not([items-end~="#{$breakpoint}"]),
+    &[items-center~="#{$breakpoint}"] {
+      align-items: center;
+      > img {
+        align-self: center;
+      }
+    }
+    &[items-end=""]:not([items-start~="#{$breakpoint}"]):not([items-center~="#{$breakpoint}"]),
+    &[items-end~="#{$breakpoint}"] {
+      align-items: flex-end;
+      > img {
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+/* ************************* HBOX LAYOUT LIGHT**************************** */
+@mixin hbox-layout-light() {
+  body {
+    &[hbox=""] {
+      &:not([items-start=""]),
+      &[fluid=""] {
+        min-height: 100vh;
+      }
+    }
+  }
+
+  [hbox=""] {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; //flex-start | flex-end | center | space-between | space-around
+    align-items: stretch;
+
+    > [m-auto=""] {
+      margin-left: auto;
+    }
+
+    > img {
+      max-height: 100%;
+      object-fit: cover;
+      align-self: center;
+    }
+
+    > *:not(img) {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    &[space-start=""] {
+      justify-content: flex-start;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+    &[space-center=""] {
+      justify-content: center;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+    &[space-end=""] {
+      justify-content: flex-end;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+    &[space-between=""] {
+      justify-content: space-between;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+    &[space-around=""] {
+      justify-content: space-around;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+    &[space-evenly=""] {
+      justify-content: space-evenly;
+      & > *:not(img) {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    &[items-start=""] {
+      align-items: flex-start;
+      > img {
+        align-self: flex-start;
+      }
+    }
+    &[items-center=""] {
+      align-items: center;
+      > img {
+        align-self: center;
+      }
+    }
+    &[items-end=""] {
+      align-items: flex-end;
+      > img {
+        align-self: flex-end;
+      }
+    }
+  }
+}

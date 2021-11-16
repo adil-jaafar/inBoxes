@@ -1,0 +1,28 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body, body *:not(script, style) {
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+[vbox] {
+    flex-direction: column;
+}
+
+[hbox] {
+    flex-direction: row;
+}
+
+*:is([vbox],[hbox]) > * {
+    flex: 1;
+}

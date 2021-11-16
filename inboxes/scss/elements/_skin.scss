@@ -1,0 +1,45 @@
+@mixin media-sizes($breakpoint, $from, $to) {
+  $index: index(map-keys($map-font-sizes), $breakpoint);
+  $list-sizes: map-get($map-font-sizes, $breakpoint);
+  @each $p, $v in $list-sizes {
+    #{$p} {
+      @if $from == null or $to == null {
+        font-size: #{$v};
+      } @else {
+        $next-breakpoint: nth(map-keys($map-font-sizes), $index + 1);
+        $next-list-sizes: map-get($map-font-sizes, $next-breakpoint);
+        $next-v: map-get($next-list-sizes, $p);
+        $m: ($next-v - $v)/ ($to - $from);
+        $b: $v - $m * $from;
+        $sign: "+";
+        @if ($b < 0) {
+          $sign: "-";
+          $b: abs($b);
+        }
+        font-size: calc(#{$m * 100}vw #{$sign} #{$b});
+      }
+    }
+  }
+}
+
+@for $i from 1 through $breakpoints-count {
+  $bp: nth(map-keys($breakpoints), $i);
+  $prev-bp: if($i > 1, nth(map-keys($breakpoints), $i - 1), null);
+
+  $bp-value: map-get($breakpoints, $bp);
+  $prev-bp-value: if($prev-bp == null, null, map-get($breakpoints, $prev-bp));
+
+  @if $i == 1 {
+    @include respond-below($bp) {
+      @include media-sizes($bp, null, $bp-value);
+    }
+  } @else if $i == $breakpoints-count {
+    @include respond-above($prev-bp) {
+      @include media-sizes($bp, $prev-bp-value, null);
+    }
+  } @else {
+    @include respond-between($prev-bp, $bp) {
+      @include media-sizes($bp, $prev-bp-value, $bp-value);
+    }
+  }
+}
