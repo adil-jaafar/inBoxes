@@ -3,7 +3,8 @@ html {
     padding: 0;
 }
 
-body, body *:not(script, style) {
+body,
+body *:not(script, style) {
     box-sizing: border-box;
     display: flex;
     position: relative;
@@ -12,17 +13,237 @@ body, body *:not(script, style) {
 body {
     min-height: 100vh;
     margin: 0;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 
-[vbox] {
+// Layouts
+[ib-xs] [vbox~="xs"],
+[ib-sm] [vbox~="sm"],
+[ib-md] [vbox~="md"],
+[ib-lg] [vbox~="lg"],
+[ib-xl] [vbox~="xl"],
+[vbox=""]:not([ib-xs] [hbox~="xs"], [ib-sm] [hbox~="sm"], [ib-md] [hbox~="md"], [ib-lg] [hbox~="lg"], [ib-xl]
+        [hbox~="xl"], [ib-xs] [wrap*="xs-"], [ib-sm] [wrap*="sm-"], [ib-md] [wrap*="md-"], [ib-lg]
+        [wrap*="lg-"], [ib-xl] [wrap*="xl-"]) {
     flex-direction: column;
+    & > * {
+        flex: 1;
+    }
 }
 
-[hbox] {
+[ib-xs] [hbox~="xs"],
+[ib-sm] [hbox~="sm"],
+[ib-md] [hbox~="md"],
+[ib-lg] [hbox~="lg"],
+[ib-xl] [hbox~="xl"],
+[hbox=""]:not([ib-xs] [vbox~="xs"], [ib-sm] [vbox~="sm"], [ib-md] [vbox~="md"], [ib-lg] [vbox~="lg"], [ib-xl]
+        [vbox~="xl"], [ib-xs] [wrap*="xs-"], [ib-sm] [wrap*="sm-"], [ib-md] [wrap*="md-"], [ib-lg]
+        [wrap*="lg-"], [ib-xl] [wrap*="xl-"]) {
     flex-direction: row;
+    & > * {
+        flex: 1;
+    }
 }
 
-*:is([vbox],[hbox]) > * {
-    flex: 1;
+//wrap
+[ib-xs] [wrap*="xs-"] {
+    flex-wrap: wrap;
+    &:is([wrap*="xs-1"]) > * {
+        flex-basis: calc(100% / 1);
+    }
+    &:is([wrap*="xs-2"])  > * {
+        flex-basis: calc(100% / 2);
+        &[col*="xs-2"], &[col^="2"]:not([col*="xs-"])  {
+            flex-basis: calc(2 * 100% / 2);
+        }
+    }
+    &:is([wrap*="xs-3"])  > * {
+        flex-basis: calc(100% / 3);
+        &[col*="xs-2"], &[col^="2"]:not([col*="xs-"])  {
+            flex-basis: calc(2 * 100% / 3);
+        }
+        &[col*="xs-3"], &[col^="3"]:not([col*="xs-"])  {
+            flex-basis: calc(3 * 100% / 3);
+        }
+    }
+    &:is([wrap*="xs-4"]) > * {
+        flex-basis: calc(100% / 4);
+        &[col*="xs-2"], &[col^="2"]:not([col*="xs-"])  {
+            flex-basis: calc(2 * 100% / 4);
+        }
+        &[col*="xs-3"], &[col^="3"]:not([col*="xs-"])  {
+            flex-basis: calc(3 * 100% / 4);
+        }
+        &[col*="xs-4"], &[col^="4"]:not([col*="xs-"])  {
+            flex-basis: calc(4 * 100% / 4);
+        }
+    }
+}
+
+[ib-sm] [wrap*="sm-"] {
+    flex-wrap: wrap;
+    &:is([wrap*="sm-1"]) > * {
+        flex-basis: calc(100% / 1);
+    }
+    &:is([wrap*="sm-2"]) > * {
+        flex-basis: calc(100% / 2);
+        &[col*="sm-2"], &[col^="2"]:not([col*="sm-"])  {
+            flex-basis: calc(2 * 100% / 2);
+        }
+    }
+    &:is([wrap*="sm-3"]) > * {
+        flex-basis: calc(100% / 3);
+        &[col*="sm-2"], &[col^="2"]:not([col*="sm-"])  {
+            flex-basis: calc(2 * 100% / 3);
+        }
+        &[col*="sm-3"], &[col^="3"]:not([col*="sm-"])  {
+            flex-basis: calc(3 * 100% / 3);
+        }
+    }
+    &:is([wrap*="sm-4"]) > * {
+        flex-basis: calc(100% / 4);
+        &[col*="sm-2"], &[col^="2"]:not([col*="sm-"])  {
+            flex-basis: calc(2 * 100% / 4);
+        }
+        &[col*="sm-3"], &[col^="3"]:not([col*="sm-"])  {
+            flex-basis: calc(3 * 100% / 4);
+        }
+        &[col*="sm-4"], &[col^="4"]:not([col*="sm-"])  {
+            flex-basis: calc(4 * 100% / 4);
+        }
+    }
+}
+
+[ib-md] [wrap*="md-"] {
+    flex-wrap: wrap;
+    &:is([wrap*="md-1"]) > * {
+        flex-basis: calc(100% / 1);
+    }
+    &:is([wrap*="md-2"]) > * {
+        flex-basis: calc(100% / 2);
+        &[col*="md-2"], &[col^="2"]:not([col*="md-"])  {
+            flex-basis: calc(2 * 100% / 2);
+        }
+    }
+    &:is([wrap*="md-3"]) > * {
+        flex-basis: calc(100% / 3);
+        &[col*="md-2"], &[col^="2"]:not([col*="md-"])  {
+            flex-basis: calc(2 * 100% / 3);
+        }
+        &[col*="md-3"], &[col^="3"]:not([col*="md-"])  {
+            flex-basis: calc(3 * 100% / 3);
+        }
+    }
+    &:is([wrap*="md-4"]) > * {
+        flex-basis: calc(100% / 4);
+        &[col*="md-2"], &[col^="2"]:not([col*="md-"])  {
+            flex-basis: calc(2 * 100% / 4);
+        }
+        &[col*="md-3"], &[col^="3"]:not([col*="md-"])  {
+            flex-basis: calc(3 * 100% / 4);
+        }
+        &[col*="md-4"], &[col^="4"]:not([col*="md-"])  {
+            flex-basis: calc(4 * 100% / 4);
+        }
+    }
+}
+
+[ib-lg] [wrap*="lg-"] {
+    flex-wrap: wrap;
+    &:is([wrap*="lg-1"])  > * {
+        flex-basis: calc(100% / 1);
+    }
+    &:is([wrap*="lg-2"]) > * {
+        flex-basis: calc(100% / 2);
+        &[col*="lg-2"], &[col^="2"]:not([col*="lg-"])  {
+            flex-basis: calc(2 * 100% / 2);
+        }
+    }
+    &:is([wrap*="lg-3"]) > * {
+        flex-basis: calc(100% / 3);
+        &[col*="lg-2"], &[col^="2"]:not([col*="lg-"])  {
+            flex-basis: calc(2 * 100% / 3);
+        }
+        &[col*="lg-3"], &[col^="3"]:not([col*="lg-"])  {
+            flex-basis: calc(3 * 100% / 3);
+        }
+    }
+    &:is([wrap*="lg-4"]) > * {
+        flex-basis: calc(100% / 4);
+        &[col*="lg-2"], &[col^="2"]:not([col*="lg-"])  {
+            flex-basis: calc(2 * 100% / 4);
+        }
+        &[col*="lg-3"], &[col^="3"]:not([col*="lg-"])  {
+            flex-basis: calc(3 * 100% / 4);
+        }
+        &[col*="lg-4"], &[col^="4"]:not([col*="lg-"])  {
+            flex-basis: calc(4 * 100% / 4);
+        }
+    }
+}
+
+[ib-xl] [wrap*="xl-"] {
+    flex-wrap: wrap;
+    &:is([wrap*="xl-1"]) > * {
+        flex-basis: calc(100% / 1);
+    }
+    &:is([wrap*="xl-2"]) > * {
+        flex-basis: calc(100% / 2);
+        &[col*="xl-2"], &[col^="2"]:not([col*="xl-"])  {
+            flex-basis: calc(2 * 100% / 2);
+        }
+    }
+    &:is([wrap*="xl-3"]) > * {
+        flex-basis: calc(100% / 3);
+        &[col*="xl-2"], &[col^="2"]:not([col*="xl-"])  {
+            flex-basis: calc(2 * 100% / 3);
+        }
+        &[col*="xl-3"], &[col^="3"]:not([col*="xl-"])  {
+            flex-basis: calc(3 * 100% / 3);
+        }
+    }
+    &:is([wrap*="xl-4"]) > * {
+        flex-basis: calc(100% / 4);
+        &[col*="xl-2"], &[col^="2"]:not([col*="xl-"])  {
+            flex-basis: calc(2 * 100% / 4);
+        }
+        &[col*="xl-3"], &[col^="3"]:not([col*="xl-"])  {
+            flex-basis: calc(3 * 100% / 4);
+        }
+        &[col*="xl-4"], &[col^="4"]:not([col*="xl-"])  {
+            flex-basis: calc(4 * 100% / 4);
+        }
+    }
+}
+
+[wrap=""]:not([ib-xs] [vbox~="xs"], [ib-sm] [vbox~="sm"], [ib-md] [vbox~="md"], [ib-lg] [vbox~="lg"], [ib-xl]
+        [vbox~="xl"], [ib-xs] [hbox~="xs"], [ib-sm] [hbox~="sm"], [ib-md] [hbox~="md"], [ib-lg] [hbox~="lg"], [ib-xl]
+        [hbox~="xl"]) {
+    flex-wrap: wrap;
+    // 5,6,7,8
+}
+
+
+// Alignement 
+[ib-xs] [items-start~="xs"],
+[ib-sm] [items-start~="sm"],
+[ib-md] [items-start~="md"],
+[ib-lg] [items-start~="lg"],
+[ib-xl] [items-start~="xl"],
+[items-start=""] {
+    align-items: flex-start;
+}
+
+
+//Spacing
+[ib-xs] [spacing-start~="xs"],
+[ib-sm] [spacing-start~="sm"],
+[ib-md] [spacing-start~="md"],
+[ib-lg] [spacing-start~="lg"],
+[ib-xl] [spacing-start~="xl"],
+[spacing-start=""] {
+    justify-content: start;
+    & > * {
+        flex: none;
+    }
 }

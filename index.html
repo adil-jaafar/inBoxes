@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +8,38 @@
     <title>Document</title>
     <link rel="stylesheet" href="inboxes.css">
     <style>
-
-        div:nth-child(2n) {
+        *:nth-child(2n) {
             background-color: aqua;
         }
-        div:nth-child(2n+1) {
+
+        *:nth-child(2n+1) {
             background-color: bisque;
         }
     </style>
+    <script>
+        !function (d) {
+            function e() { for (var b = 0; b < a.length; b++)a[b].h.matches ? d.setAttribute("ib-" + a[b].g, "") : d.removeAttribute("ib-" + a[b].g) } for (var a = [{ g: "xs", h: window.matchMedia("screen and (max-width: 479.98px)") }, { g: "sm", h: window.matchMedia("screen and (min-width: 480px) and (max-width: 767.98px)") }, { g: "md", h: window.matchMedia("screen and (min-width: 768px) and (max-width: 991.98px)") }, { g: "lg", h: window.matchMedia("screen and (min-width: 992px) and (max-width: 1199.98px)") }, { g: "xl", h: window.matchMedia("screen and (min-width: 1200px)") }],
+                c = 0; c < a.length; c++)a[c].h.addListener(e); e()
+        }(document.documentElement);
+    </script>
 </head>
-<body vbox hbox>
+
+<body hbox vbox="md xs" spacing-start="md" wrap="lg-3 sm-2 xl-4" spacing-items="10">
+    <div vbox items-start="md sm" hbox="md xs">
+        <a href="">a</a>
+        <a href="">b</a>
+        <a href="">c</a>
+        <a href="">d</a>
+        <a href="">e</a>
+    </div>
+    <div col="2 xl-3">2 cols</div>
+    <div>ds</div>
+    <div>ds</div>
+    <div>ds</div>
+    <div>ds</div>
     <div>ds</div>
     <div>ds</div>
     <div>ds</div>
 </body>
+
 </html>
