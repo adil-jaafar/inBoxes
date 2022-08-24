@@ -1,0 +1,17 @@
+
+
+@mixin spacing($breakpoint) {
+    @each $i, $v in $spacing-map {
+        [spacing-top~="#{$breakpoint}-#{$i}"],
+        [spacing-top~="#{$i}"]:not([spacing-top*="#{$breakpoint}-"]) {
+            margin-top: $v;
+        }
+    }
+
+    @each $i, $v in $spacing-map {
+        [spacing-bottom~="#{$breakpoint}-#{$i}"],
+        [spacing-bottom~="#{$i}"]:not([spacing-bottom*="#{$breakpoint}-"]) {
+            margin-bottom: $v;
+        }
+    }
+}

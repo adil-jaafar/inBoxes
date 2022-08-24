@@ -1,0 +1,35 @@
+$breakpoints: (
+    "xs": 480px,
+    "sm": 768px,
+    "md": 992px,
+    "lg": 1200px,
+    "xl": null,
+);
+
+$flex-nb: 8;
+$flex-order-from: -5;
+$flex-order-to: 5;
+
+$spacing-map: (
+    0: 0px,
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+    5: 5px,
+    6: 6px,
+    7: 7px,
+    8: 8px,
+    9: 9px,
+    10: 10px,
+    11: 20px,
+    12: 30px,
+    13: 40px,
+    14: 50px,
+    15: 60px,
+    16: 70px,
+    17: 80px,
+    18: 90px,
+    19: 100px,
+    20: 200px,
+);

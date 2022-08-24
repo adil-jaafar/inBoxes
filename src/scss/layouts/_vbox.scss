@@ -1,0 +1,39 @@
+/******************************* VBOX Layout *******************************/
+@import "features/all";
+
+@mixin vbox-layout($breakpoint) {
+    $wrap-selectors: '[wrap=""],[wrap~="#{$breakpoint}-"]';
+    @for $n from 0 to $flex-nb + 1 {
+        $wrap-selectors: '#{$wrap-selectors},[wrap~="#{$n}"]';
+    }
+
+    [vbox~="#{$breakpoint}"],
+    [vbox=""]:not([hbox~="#{$breakpoint}"]) {
+        display: flex;
+        &:not([reverse=""]):not([reverse~="#{$breakpoint}"]) {
+            flex-direction: column;
+        }
+        &[reverse=""],
+        &[reverse~="#{$breakpoint}"] {
+            flex-direction: column-reverse;
+        }
+    }
+
+    [vbox~="#{$breakpoint}"],
+    [vbox=""]:not([hbox~="#{$breakpoint}"], #{$wrap-selectors}) {
+        & > img {
+            max-width: 100%;
+            object-fit: cover;
+            align-self: center;
+        }
+
+        /* & > *:not(img) {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0%;
+        } */
+
+        @include vbox-m-auto($breakpoint);
+        @include vbox-spacing($breakpoint);
+    }
+}

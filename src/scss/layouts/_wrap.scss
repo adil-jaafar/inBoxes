@@ -1,0 +1,41 @@
+/******************************* WRAP Layout *******************************/
+@mixin wrap-layout($breakpoint) {
+    
+    @for $i from 0 to $flex-nb + 1 {
+        $s : '';
+        @if 0 == $i {
+            $s : '[wrap=""],'
+        }
+        
+        #{$s}
+        [wrap~="#{$breakpoint}-#{$i}"],
+        [wrap~="#{$i}"]:not([wrap*="#{$breakpoint}-"]) {
+            display: flex;
+
+            &:not([wrap-reverse=""]):not([wrap-reverse~="#{$breakpoint}"]) {
+                flex-wrap: wrap;
+            }
+            &[wrap-reverse=""],
+            &[wrap-reverse~="#{$breakpoint}"] {
+                flex-wrap: wrap-reverse;
+            }
+
+            &[reverse=""]:not([vbox=""],[vbox~="#{$breakpoint}"],[hbox=""],[hbox~="#{$breakpoint}"]),
+            &[reverse~="#{$breakpoint}"]:not([vbox=""],[vbox~="#{$breakpoint}"],[hbox=""],[hbox~="#{$breakpoint}"]) {
+                flex-direction: row-reverse;
+            }
+
+            @if 0 != $i {
+                & > * {
+                    flex: 0 0 calc(100% / #{$i}) !important;
+                }
+                @each $k, $v in $spacing-map {
+                    &[gap~="#{$breakpoint}-#{$k}"] > *,
+                    &[gap~="#{$k}"]:not([gap*="#{$breakpoint}-"]) > * {
+                        flex: 0 0 calc((100% - #{($i - 1) * $v}) / #{$i}) !important;
+                    }
+                }
+            }
+        }
+    }
+}

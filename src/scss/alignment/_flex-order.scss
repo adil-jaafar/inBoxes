@@ -1,0 +1,10 @@
+
+
+@mixin flex-order($breakpoint) {
+    @for $i from $flex-order-from to $flex-order-to + 1 {
+        $selector-order: '[flex-order~="#{$breakpoint}-#{$i}"], [flex-order~="#{$i}"]:not([flex-order*="#{$breakpoint}-"])';
+        #{$selector-order} {
+            order: $i;
+        }
+    }
+}

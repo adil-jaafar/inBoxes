@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InBoxes</title>
+    <link rel="stylesheet" href="highlight/styles/googlecode.min.css">
+    <script src="highlight/highlight.min.js"></script>
+    <script src="js-beautify/1.14.0/beautify-html.js"></script>
+    <link rel="stylesheet" href="css/inboxes.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        /* !function (d) {
+            function e() { for (var b = 0; b < a.length; b++)a[b].h.matches ? d.setAttribute("ib-" + a[b].g, "") : d.removeAttribute("ib-" + a[b].g) } for (var a = [{ g: "xs", h: window.matchMedia("screen and (max-width: 479.98px)") }, { g: "sm", h: window.matchMedia("screen and (min-width: 480px) and (max-width: 767.98px)") }, { g: "md", h: window.matchMedia("screen and (min-width: 768px) and (max-width: 991.98px)") }, { g: "lg", h: window.matchMedia("screen and (min-width: 992px) and (max-width: 1199.98px)") }, { g: "xl", h: window.matchMedia("screen and (min-width: 1200px)") }],
+                c = 0; c < a.length; c++)a[c].h.addListener(e); e()
+        }(document.documentElement); */
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('code.language-html').forEach((el) => {
+                var code = "";
+                if (undefined != el.dataset.source) {
+                    var elem = document.querySelector(el.dataset.source);
+                    if (elem) {
+                        code = elem.outerHTML.replaceAll(/\s*(id|class)="[^"]*"/g, "");
+                        code = '\n' + code;
+                    }
+                } else {
+                    code = el.innerHTML;
+                }
+                code = code.replaceAll('=""', '');
+                code = html_beautify(code);
+                el.innerHTML = hljs.highlightAuto(code).value;
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div vbox space-start class="container">
+        <div>InBoxes</div>
+        <h2>Less HTML, more fun !!</h2>
+        <p>Wytiwyg : What you Think is what you get</p>
+        <p>Inboxes est un responsive framework CSS open source basé sur flexbox et Sass. Facile à utiliser avec une expérience moderne conçue pour tous.</p>
+        <div hbox vbox="xs sm" space-center gap="10" sticky-top class="menu">
+            <a href="#layout">Layout</a>
+            <a href="#alignement">Alignement</a>
+            <a href="#espacement">Espacement</a>
+            <a href="#marges">Marges</a>
+            <a href="#flex">Flex</a>
+            <a href="#positions">Positions</a>
+            <a href="#visibilite">Visibilité</a>
+            <a href="#responsive">Responsive</a>
+        </div>
+        <div vbox>
+            <h3 class="anchore" id="layout">1. Layout</h3>
+            <p><strong>hbox</strong> : permet d’aligner les éléments horizontalement dans le container</p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox" class="demo_box" hbox>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox"></code>
+            </div>
+
+            <p><strong>vbox</strong> : permet d’aligner les éléments verticalement dans le container </p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="vbox" class="demo_box" vbox>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                    <div class="item"> E </div>
+                </div>
+                <code class="language-html" data-source="#vbox"></code>
+            </div>
+
+            <p><strong>wrap</strong> : indique si les éléments flexibles sont contraints à être disposés sur une seule
+                ligne ou s'ils peuvent être affichés sur plusieurs lignes avec un retour automatique. La valeur
+                d’intervalle de 1 jusqu’à 8. </p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="wrap" class="demo_box" wrap="3">
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                    <div class="item"> E </div>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                    <div class="item"> E </div>
+                </div>
+                <code class="language-html" data-source="#wrap"></code>
+            </div>
+
+            <p><strong>reverse</strong> Change l'ordre des éléments. utilisé avec vbox, hbox ou wrap</p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-reverse" class="demo_box" hbox reverse>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                </div>
+                <code class="language-html" data-source="#hbox-reverse"></code>
+            </div>
+
+            <div hbox vbox="xs sm" gap="10" spacing-top="12">
+                <div id="wrap-reverse" class="demo_box" wrap="3" wrap-reverse>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                    <div class="item"> E </div>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                    <div class="item"> E </div>
+                </div>
+                <code class="language-html" data-source="#wrap-reverse"></code>
+            </div>
+
+            <h3 class="anchore" id="alignement">2. Alignement : </h3>
+            <p><strong>Items-start</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-items-start" class="demo_box some_height" hbox items-start>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-items-start"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-items-start" class="demo_box" vbox items-start>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-items-start"></code>
+            </div>
+
+            <p><strong>Items-center</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-items-center" class="demo_box some_height" hbox items-center>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-items-center"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-items-center" class="demo_box" vbox items-center>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-items-center"></code>
+            </div>
+
+            <p><strong>Items-end</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-items-end" class="demo_box some_height" hbox items-end>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-items-end"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-items-end" class="demo_box" vbox items-end>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-items-end"></code>
+            </div>
+
+            <p><strong>Start / center /end / stretch</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-items-self" class="demo_box some_height" hbox>
+                    <div class="item" start> A </div>
+                    <div class="item"> B </div>
+                    <div class="item" center> C </div>
+                    <div class="item" end> D </div>
+                </div>
+                <code class="language-html" data-source="#hbox-items-self"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-items-self2" class="demo_box" vbox items-start>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item" stretch> D </div>
+                </div>
+                <code class="language-html" data-source="#vbox-items-self2"></code>
+            </div>
+
+            <h3 class="anchore" id="espacement">3. Espacement : </h3>
+            <p><strong>space-fill</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-space-fill" class="demo_box" hbox space-fill>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-space-fill"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-space-fill" class="demo_box some_height" vbox space-fill>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-fill"></code>
+            </div>
+
+            <p><strong>space-start</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-space-start" class="demo_box" hbox space-start>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-space-start"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-space-start" class="demo_box some_height" vbox space-start>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-start"></code>
+            </div>
+
+            <p><strong>space-center</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-space-center" class="demo_box" hbox space-center>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-space-center"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-space-center" class="demo_box some_height" vbox space-center>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-center"></code>
+            </div>
+
+            <p><strong>space-end</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-space-end" class="demo_box" hbox space-end>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-space-end"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-space-end" class="demo_box some_height" vbox space-end>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-end"></code>
+            </div>
+
+            <p><strong>space-between</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-space-between" class="demo_box" hbox space-between>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-space-between"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-space-between" class="demo_box some_height" vbox space-between>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-between"></code>
+            </div>
+
+            <p><strong>space-around</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-space-around" class="demo_box" hbox space-around>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-space-around"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-space-around" class="demo_box some_height" vbox space-around>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-around"></code>
+            </div>
+
+            <p><strong>space-evenly</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-space-evenly" class="demo_box" hbox space-evenly>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-space-evenly"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-space-evenly" class="demo_box some_height" vbox space-evenly>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-evenly"></code>
+            </div>
+
+            <p><strong>space et alignement</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="vbox-space-align" class="demo_box some_height" hbox space-end items-start>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-space-align"></code>
+            </div>
+
+            <h3 class="anchore" id="marges">4. Marges : </h3>
+            <p><strong>m-auto</strong></p>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-m-auto" class="demo_box" hbox space-end>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item" m-auto> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-m-auto"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-m-auto" class="demo_box some_height" vbox space-end>
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item" m-auto> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-m-auto"></code>
+            </div>
+
+            <p><strong>Spacing</strong> Les propriétés de marge CSS/inboxes sont utilisées pour créer de l'espace autour
+                des éléments, à l'extérieur des frontières définies.
+            <ul>
+                <li>0: 0px</li>
+                <li>1: 1px</li>
+                <li>2: 2px</li>
+                <li>3: 3px</li>
+                <li>4: 4px</li>
+                <li>5: 5px</li>
+                <li>6: 6px</li>
+                <li>7: 7px</li>
+                <li>8: 8px</li>
+                <li>9: 9px</li>
+                <li>10: 10px</li>
+                <li>11: 20px</li>
+                <li>12: 30px</li>
+                <li>13: 40px</li>
+                <li>14: 50px</li>
+                <li>15: 60px</li>
+                <li>16: 70px</li>
+                <li>17: 80px</li>
+                <li>18: 90px</li>
+                <li>19: 100px</li>
+                <li>20: 200px</li>
+            </ul>
+            </p>
+            <h4>spacing-before</h4>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-spacing-before" class="demo_box" hbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-before="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-spacing-before"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-before="12">
+                <div id="vbox-spacing-before" class="demo_box" vbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-before="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-spacing-before"></code>
+            </div>
+
+            <h4>spacing-after</h4>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-spacing-after" class="demo_box" hbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-after="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-spacing-after"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-top="12">
+                <div id="vbox-spacing-after" class="demo_box" vbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-after="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-spacing-after"></code>
+            </div>
+
+            <h4>spacing-top</h4>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-spacing-top" class="demo_box" hbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-top="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-spacing-top"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-top="12">
+                <div id="vbox-spacing-top" class="demo_box" vbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-top="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-spacing-top"></code>
+            </div>
+
+            <h4>spacing-bottom</h4>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-spacing-bottom" class="demo_box" hbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-bottom="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#hbox-spacing-bottom"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-top="12">
+                <div id="vbox-spacing-bottom" class="demo_box" vbox>
+                    <div class="item"> A </div>
+                    <div class="item" spacing-bottom="13"> B </div>
+                    <div class="item"> C </div>
+                </div>
+                <code class="language-html" data-source="#vbox-spacing-bottom"></code>
+            </div>
+
+            <h4>gap</h4>
+            <div hbox vbox="xs sm" gap="10">
+                <div id="hbox-gap" class="demo_box" hbox gap="12">
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                </div>
+                <code class="language-html" data-source="#hbox-gap"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-top="12">
+                <div id="vbox-gap" class="demo_box" vbox gap="13">
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                </div>
+                <code class="language-html" data-source="#vbox-gap"></code>
+            </div>
+            <div hbox vbox="xs sm" gap="10" spacing-top="12">
+                <div id="wrap-gap" class="demo_box" wrap="3" gap="10">
+                    <div class="item"> A </div>
+                    <div class="item"> B </div>
+                    <div class="item"> C </div>
+                    <div class="item"> D </div>
+                    <div class="item"> E </div>
+                    <div class="item"> F </div>
+                    <div class="item"> G </div>
+                </div>
+                <code class="language-html" data-source="#wrap-gap"></code>
+            </div>
+
+        </div>
+
+        <h3 class="anchore" id="flex">5. Flex</h3>
+        <p><strong>flex :</strong> Permet de définir l'espace que l'élément devrait consommer dans un container flexible
+            relativement à la taille des autres éléments.</p>
+        <div hbox vbox="xs sm" gap="10">
+            <div id="hbox-flex" class="demo_box" hbox>
+                <div class="item"> A </div>
+                <div class="item" flex="2"> B </div>
+                <div class="item"> C </div>
+            </div>
+            <code class="language-html" data-source="#hbox-flex"></code>
+        </div>
+
+        <div hbox vbox="xs sm" gap="10" spacing-top="12">
+            <div id="vbox-flex" class="demo_box some_height" vbox>
+                <div class="item"> A </div>
+                <div class="item" flex="2"> B </div>
+                <div class="item"> C </div>
+            </div>
+            <code class="language-html" data-source="#vbox-flex"></code>
+        </div>
+
+        <p><strong>flex-order :</strong> Les éléments par défaut prennent une valeur 0 avec un ordre croissant. On peut
+            changer cet ordre en utilisant un nombre entier (Integer) indiquant l'ordre à appliquer pour l'élément dans
+            un intervalle de [-5,5]. </p>
+        <div hbox vbox="xs sm" gap="10">
+            <div id="hbox-flex-order" class="demo_box" hbox>
+                <div class="item"> A </div>
+                <div class="item" flex-order="-1"> B </div>
+                <div class="item"> C </div>
+            </div>
+            <code class="language-html" data-source="#hbox-flex-order"></code>
+        </div>
+
+        <div hbox vbox="xs sm" gap="10" spacing-top="12">
+            <div id="vbox-flex-order" class="demo_box some_height" vbox>
+                <div class="item"> A </div>
+                <div class="item" flex-order="-1"> B </div>
+                <div class="item"> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#vbox-flex-order"></code>
+        </div>
+
+        <h3 class="anchore" id="positions">6. Positions</h3>
+        <p><strong>relative-* :</strong> Permet de fixer l'élément relativement à son parent.</p>
+        <div hbox vbox="xs sm" gap="10">
+            <div id="hbox-relative-top" class="demo_box some_height" hbox>
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item item--highlighted" relative-top> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#hbox-relative-top"></code>
+        </div>
+
+        <div hbox vbox="xs sm" gap="10" spacing-top="12">
+            <div id="vbox-relative-top" class="demo_box some_height" vbox>
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item item--highlighted" relative-top> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#vbox-relative-top"></code>
+        </div>
+
+        <div hbox vbox="xs sm" gap="10" spacing-top="12">
+            <div id="hbox-relative-bottom" class="demo_box some_height" hbox>
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item item--highlighted" relative-bottom> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#hbox-relative-bottom"></code>
+        </div>
+
+        <div hbox vbox="xs sm" gap="10" spacing-top="12">
+            <div id="vbox-relative-left" class="demo_box some_height" vbox>
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item item--highlighted" relative-left> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#vbox-relative-left"></code>
+        </div>
+
+        <div hbox vbox="xs sm" gap="10" spacing-top="12">
+            <div id="vbox-relative-right" class="demo_box some_height" vbox>
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item item--highlighted" relative-right> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#vbox-relative-right"></code>
+        </div>
+
+        <p>Combiné avec les attributs d'alignement.</p>
+        <div hbox vbox="xs sm" gap="10">
+            <div id="vbox-relative-top-center" class="demo_box some_height" vbox>
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item item--highlighted" relative-top center> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#vbox-relative-top-center"></code>
+        </div>
+
+        <div hbox vbox="xs sm" gap="10" spacing-top="12">
+            <div id="vbox-relative-top-end" class="demo_box some_height" vbox>
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item item--highlighted" relative-top end> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#vbox-relative-top-end"></code>
+        </div>
+
+        <p>Autres attributs de Positionnement : fixed-* et sticky-*</p>
+
+        <h3 class="anchore" id="visibilite">7. Visibilité</h3>
+        <p><strong>hide :</strong></p>
+        <div hbox vbox="xs sm" gap="10">
+            <div id="hbox-hide" class="demo_box" hbox>
+                <div class="item"> A </div>
+                <div class="item" hide> B </div>
+                <div class="item"> C </div>
+            </div>
+            <code class="language-html" data-source="#hbox-hide"></code>
+        </div>
+
+        <h3 class="anchore" id="responsive">8. Responsive</h3>
+        <p>Modifier la mise en page d’un site afin que le contenu s’adapte à l’écran quel que soit le terminal utilisé
+            (smartphone, tablette, ordinateur…), inboxes le rend assez simple en utilisant les valeurs media
+            xs-sm-md-lg-xl-pr qui représentent les différentes tailles des écrans existantes selon leur largeur :
+        <ul>
+            <li>xs : petites tailles d’écran moins de 480px</li>
+            <li>sm : les petites tailles d’écran entre [480px , 768px[</li>
+            <li>md : les tailles medium d’écran entre [768px , 992px[</li>
+            <li>lg : les tailles grandes d’écran entre [992px , 1200px[</li>
+            <li>xl : les grandes tailles d’écran plus que 1200px</li>
+            <li>pr : à l’impression</li>
+        </ul>
+        </p>
+        <div hbox vbox="xs sm" gap="10">
+            <div id="responsive-box" class="demo_box" hbox vbox="xs sm">
+                <div class="item"> A </div>
+                <div class="item"> B </div>
+                <div class="item"> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#responsive-box"></code>
+        </div>
+
+        <p>Les valeurs media xs-sm-md-lg-xl-pr s’utilisent aussi avec tous les autres attributs inboxes.</p>
+        <div hbox vbox="xs sm" gap="10">
+            <div id="responsive-attr" class="demo_box" hbox vbox="xs sm">
+                <div class="item item--highlighted" relative-top relative-bottom="xs sm" relative-left="md"> A </div>
+                <div class="item"> B </div>
+                <div class="item" center="md"> C </div>
+                <div class="item"> D </div>
+                <div class="item"> E </div>
+            </div>
+            <code class="language-html" data-source="#responsive-attr"></code>
+        </div>
+
+    </div>
+</body>
+
+</html>

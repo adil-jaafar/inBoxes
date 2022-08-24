@@ -1,0 +1,35 @@
+/************************* Aligns *******************/
+
+@mixin aligns($breakpoint) {
+    [items-start~="#{$breakpoint}"],
+    [items-start=""]:not([items-center~="#{$breakpoint}"], [items-end~="#{$breakpoint}"], [items-stretch~="#{$breakpoint}"]) {
+        align-items: flex-start;
+        > img {
+            align-self: flex-start;
+        }
+    }
+
+    [items-center~="#{$breakpoint}"],
+    [items-center=""]:not([items-start~="#{$breakpoint}"], [items-end~="#{$breakpoint}"], [items-stretch~="#{$breakpoint}"]) {
+        align-items: center;
+        > img {
+            align-self: center;
+        }
+    }
+
+    [items-end~="#{$breakpoint}"],
+    [items-end=""]:not([items-start~="#{$breakpoint}"], [items-center~="#{$breakpoint}"], [items-stretch~="#{$breakpoint}"]) {
+        align-items: flex-end;
+        > img {
+            align-self: flex-end;
+        }
+    }
+
+    [items-stretch~="#{$breakpoint}"],
+    [items-stretch=""]:not([items-start~="#{$breakpoint}"], [items-center~="#{$breakpoint}"], [items-end~="#{$breakpoint}"]) {
+        align-items: stretch;
+        > img {
+            align-self: center;
+        }
+    }
+}

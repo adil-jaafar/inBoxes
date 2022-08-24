@@ -1,0 +1,9 @@
+@mixin flex-size($breakpoint) {
+    @for $i from 0 to $flex-nb + 1 {
+        $selector: '[flex~="#{$breakpoint}-#{$i}"], [flex~="#{$i}"]:not([flex*="#{$breakpoint}-"])';
+        #{$selector} {
+            flex-grow: $i !important;
+            flex-shrink: 1 !important;
+        }
+    }
+}

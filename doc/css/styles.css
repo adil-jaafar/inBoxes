@@ -1,0 +1,55 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Roboto;
+}
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.menu {
+    background-color: #b487dd;
+    padding: 10px;
+}
+
+.anchore {
+    scroll-margin-top: 50px;
+}
+
+.language-html {
+    white-space: pre;
+    border-radius: 5px;
+    border: 2px solid #e9e9e9;
+    padding: 10px 10px;
+}
+
+.item {
+    padding: 10px;
+}
+
+.item:nth-child(2n) {
+    background-color: #b487dd;
+}
+
+.item:nth-child(2n + 1) {
+    background-color: bisque;
+}
+
+.item.item--highlighted {
+    background-color: rgb(95 158 160 / 50%);
+    text-align: center;
+}
+
+.demo_box {
+    background-color: #e9e9e9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.some_height {
+    min-height: 200px;
+}

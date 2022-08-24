@@ -1,0 +1,15 @@
+@mixin vbox-m-auto($breakpoint) {
+    & > [m-auto=""],
+    & > [m-auto~="#{$breakpoint}"]:not([m-auto^="!"]),
+    & > [m-auto^="!"]:not([m-auto~="#{$breakpoint}"]) {
+        margin-block-start: auto;
+    }
+}
+
+@mixin hbox-m-auto($breakpoint) {
+    & > [m-auto=""],
+    & > [m-auto~="#{$breakpoint}"]:not([m-auto^="!"]),
+    & > [m-auto^="!"]:not([m-auto~="#{$breakpoint}"]) {
+        margin-inline-start: auto;
+    }
+}

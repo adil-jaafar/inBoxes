@@ -1,0 +1,8 @@
+@mixin gap($breakpoint) {
+    @each $i, $v in $spacing-map {
+        [gap~="#{$breakpoint}-#{$i}"],
+        [gap~="#{$i}"]:not([gap*="#{$breakpoint}-"]) {
+            gap: $v;
+        }
+    }
+}

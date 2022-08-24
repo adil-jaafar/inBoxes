@@ -1,0 +1,22 @@
+@mixin self-aligns($breakpoint) {
+    
+    [start~="#{$breakpoint}"],
+    [start=""]:not([center~="#{$breakpoint}"], [end~="#{$breakpoint}"], [stretch~="#{$breakpoint}"]) {
+        align-self: flex-start !important;
+    }
+
+    [center~="#{$breakpoint}"],
+    [center=""]:not([start~="#{$breakpoint}"], [end~="#{$breakpoint}"], [stretch~="#{$breakpoint}"]) {
+        align-self: center !important;
+    }
+
+    [end~="#{$breakpoint}"],
+    [end=""]:not([start~="#{$breakpoint}"], [center~="#{$breakpoint}"], [stretch~="#{$breakpoint}"]) {
+        align-self: flex-end !important;
+    }
+
+    [stretch~="#{$breakpoint}"],
+    [stretch=""]:not([start~="#{$breakpoint}"], [center~="#{$breakpoint}"], [end~="#{$breakpoint}"]) {
+        align-self: stretch !important;
+    }
+}
