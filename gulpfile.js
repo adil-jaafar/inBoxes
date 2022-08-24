@@ -23,7 +23,7 @@ gulp.task('css:min', function() {
             suffix: '.min'
         }))
         .pipe(gulp.dest('build'))
-        .pipe(gulp.dest('site/css'));
+        .pipe(gulp.dest('doc/css'));
 });
 
 gulp.task('default', function () {
